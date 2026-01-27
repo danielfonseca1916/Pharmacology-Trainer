@@ -1,0 +1,82 @@
+[
+  {
+    "id": "int-acei-k",
+    "appliesWhen": { "drugIds": ["drug-lisinopril"], "classes": [], "tags": ["potassium-sparing", "spironolactone"] },
+    "severity": "moderate",
+    "mechanism": { "en": "ACEi plus potassium-sparing agents raise serum potassium.", "cs": "ACEi s kalium šetřícími látkami zvyšují draslík." },
+    "recommendation": { "en": "Monitor K/creatinine within 1 week; adjust or avoid if baseline high.", "cs": "Sledujte K/kreatinin do 1 týdne; upravte nebo vyhněte se při vysokém základu." },
+    "rationale": { "en": "Additive reduction in aldosterone increases K retention.", "cs": "Adice snížení aldosteronu zvyšuje retenci K." }
+  },
+  {
+    "id": "int-beta-ccb",
+    "appliesWhen": { "drugIds": ["drug-metoprolol"], "classes": ["non-dhp-ccb"], "tags": [] },
+    "severity": "moderate",
+    "mechanism": { "en": "Combined AV nodal blockade can cause bradycardia or heart block.", "cs": "Kombinovaná AV nodální blokáda může způsobit bradykardii nebo blok." },
+    "recommendation": { "en": "Avoid or monitor HR/PR interval closely.", "cs": "Vyhnout se nebo těsně monitorovat TF/PR interval." },
+    "rationale": { "en": "Both slow AV conduction.", "cs": "Oba zpomalují AV vedení." }
+  },
+  {
+    "id": "int-warfarin-cyp",
+    "appliesWhen": { "drugIds": ["drug-warfarin"], "classes": ["cyp-inhibitor"], "tags": [] },
+    "severity": "high",
+    "mechanism": { "en": "CYP inhibitors raise warfarin levels, increasing bleeding risk.", "cs": "Inhibitory CYP zvyšují hladiny warfarinu a riziko krvácení." },
+    "recommendation": { "en": "Avoid strong inhibitors or increase INR monitoring and lower dose.", "cs": "Vyhnout se silným inhibitorům nebo zvýšit monitoring INR a snížit dávku." },
+    "rationale": { "en": "Reduced metabolism prolongs anticoagulant effect.", "cs": "Snížený metabolismus prodlužuje antikoagulační efekt." }
+  },
+  {
+    "id": "int-ssri-tramadol",
+    "appliesWhen": { "drugIds": ["drug-sertraline"], "classes": [], "tags": ["tramadol", "serotonergic"] },
+    "severity": "high",
+    "mechanism": { "en": "Sertraline plus tramadol increases serotonin, risking serotonin syndrome.", "cs": "Sertralin s tramadolem zvyšují serotonin, riziko serotoninového syndromu." },
+    "recommendation": { "en": "Avoid combination or monitor for tremor, clonus, hyperreflexia.", "cs": "Vyhnout se kombinaci nebo sledovat třes, klonus, hyperreflexii." },
+    "rationale": { "en": "Both raise synaptic serotonin.", "cs": "Oba zvyšují synaptický serotonin." }
+  },
+  {
+    "id": "int-macrolide-qt",
+    "appliesWhen": { "drugIds": ["drug-azithromycin"], "classes": [], "tags": ["qt"] },
+    "severity": "moderate",
+    "mechanism": { "en": "Macrolides prolong QT; additive with other QT-prolonging agents.", "cs": "Makrolidy prodlužují QT; aditivní s dalšími léky prodlužujícími QT." },
+    "recommendation": { "en": "Avoid in high-risk QT or monitor ECG/electrolytes.", "cs": "Vyhnout se u vysokého rizika QT nebo sledovat EKG/elektrolyty." },
+    "rationale": { "en": "Ionic channel blockade lengthens repolarization.", "cs": "Blokáda iontových kanálů prodlužuje repolarizaci." }
+  },
+  {
+    "id": "int-vancomycin-nephro",
+    "appliesWhen": { "drugIds": ["drug-vancomycin"], "classes": [], "tags": ["nephrotoxin"] },
+    "severity": "moderate",
+    "mechanism": { "en": "Concurrent nephrotoxins increase risk of kidney injury.", "cs": "Současné nefrotoxiny zvyšují riziko poškození ledvin." },
+    "recommendation": { "en": "Avoid multiple nephrotoxins; monitor creatinine and levels.", "cs": "Vyhnout se více nefrotoxinům; sledovat kreatinin a hladiny." },
+    "rationale": { "en": "Additive tubular injury.", "cs": "Aditivní tubulární poškození." }
+  },
+  {
+    "id": "int-insulin-beta",
+    "appliesWhen": { "drugIds": ["drug-insulin-glargine"], "classes": [], "tags": ["beta-blocker"] },
+    "severity": "low",
+    "mechanism": { "en": "Beta-blockers may mask hypoglycemia symptoms.", "cs": "Beta-blokátory mohou maskovat příznaky hypoglykémie." },
+    "recommendation": { "en": "Educate patient; monitor glucose closely.", "cs": "Poučit pacienta; pečlivě sledovat glykemie." },
+    "rationale": { "en": "Blunts adrenergic warning signs.", "cs": "Tlumi adrenergní varovné příznaky." }
+  },
+  {
+    "id": "int-metformin-contrast",
+    "appliesWhen": { "drugIds": ["drug-metformin"], "classes": [], "tags": ["contrast"] },
+    "severity": "moderate",
+    "mechanism": { "en": "Contrast-induced AKI can precipitate lactic acidosis with metformin.", "cs": "Kontrastem indukované AKI může s metforminem vyvolat laktátovou acidózu." },
+    "recommendation": { "en": "Hold metformin around contrast in eGFR < 60 per protocols.", "cs": "Přerušit metformin kolem kontrastu při eGFR < 60 dle protokolů." },
+    "rationale": { "en": "Reduced clearance increases metformin exposure.", "cs": "Snížená clearance zvyšuje expozici metforminu." }
+  },
+  {
+    "id": "int-ccb-stat",
+    "appliesWhen": { "drugIds": ["drug-amlodipine"], "classes": [], "tags": ["simvastatin"] },
+    "severity": "moderate",
+    "mechanism": { "en": "Amlodipine can raise simvastatin levels via CYP3A4.", "cs": "Amlodipin může zvýšit hladiny simvastatinu přes CYP3A4." },
+    "recommendation": { "en": "Limit simvastatin dose or choose alternative statin.", "cs": "Omezit dávku simvastatinu nebo zvolit alternativní statin." },
+    "rationale": { "en": "Competition for CYP metabolism.", "cs": "Konkuruje v metabolismu CYP." }
+  },
+  {
+    "id": "int-bzd-opioid",
+    "appliesWhen": { "drugIds": ["drug-lorazepam"], "classes": [], "tags": ["opioid"] },
+    "severity": "high",
+    "mechanism": { "en": "Benzodiazepines and opioids add CNS/respiratory depression.", "cs": "Benzodiazepiny a opioidy aditivně tlumí CNS/dýchání." },
+    "recommendation": { "en": "Avoid co-prescribing when possible; counsel on overdose signs.", "cs": "Pokud lze, nekombinovat; poučit o známkách předávkování." },
+    "rationale": { "en": "Both enhance GABA/opioid pathways.", "cs": "Oba posilují GABA/opioidní dráhy." }
+  }
+]

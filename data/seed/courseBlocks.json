@@ -1,0 +1,42 @@
+[
+  {
+    "id": "block-ans",
+    "title": { "en": "Autonomic Nervous System", "cs": "Autonomní nervový systém" },
+    "description": {
+      "en": "Sympathetic and parasympathetic pharmacology core agents.",
+      "cs": "Základní látky sympatiku a parasympatiku."
+    }
+  },
+  {
+    "id": "block-cv",
+    "title": { "en": "Cardiovascular", "cs": "Kardiovaskulární" },
+    "description": {
+      "en": "Antihypertensives, antianginals, heart failure therapies.",
+      "cs": "Antihypertenziva, antianginóza a léčba srdečního selhání."
+    }
+  },
+  {
+    "id": "block-abx",
+    "title": { "en": "Antibiotics", "cs": "Antibiotika" },
+    "description": {
+      "en": "Common antibacterial classes and stewardship pearls.",
+      "cs": "Běžné třídy antibiotik a zásady stewardshipu."
+    }
+  },
+  {
+    "id": "block-cns",
+    "title": { "en": "Central Nervous System", "cs": "Centrální nervový systém" },
+    "description": {
+      "en": "Analgesics, anxiolytics, anticonvulsants basics.",
+      "cs": "Analgetika, anxiolytika, antikonvulziva – základy."
+    }
+  },
+  {
+    "id": "block-endo",
+    "title": { "en": "Endocrine", "cs": "Endokrinní" },
+    "description": {
+      "en": "Diabetes, thyroid, and steroid pharmacology primers.",
+      "cs": "Farmakologie diabetu, štítné žlázy a steroidů."
+    }
+  }
+]

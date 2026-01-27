@@ -1,0 +1,192 @@
+[
+  {
+    "id": "q1",
+    "stem": {
+      "en": "Which beta-blocker is cardioselective and useful for rate control in atrial fibrillation?",
+      "cs": "Který beta-blokátor je kardioselektivní a vhodný pro kontrolu frekvence u fibrilace síní?"
+    },
+    "options": [
+      { "id": "a", "text": { "en": "Metoprolol", "cs": "Metoprolol" }, "correct": true },
+      { "id": "b", "text": { "en": "Propranolol", "cs": "Propranolol" }, "correct": false },
+      { "id": "c", "text": { "en": "Carvedilol", "cs": "Carvedilol" }, "correct": false },
+      { "id": "d", "text": { "en": "Labetalol", "cs": "Labetalol" }, "correct": false }
+    ],
+    "explanation": {
+      "en": "Metoprolol is beta-1 selective and preferred for rate control due to less bronchospasm risk.",
+      "cs": "Metoprolol je beta-1 selektivní a preferovaný pro kontrolu frekvence díky menšímu riziku bronchospasmu."
+    },
+    "tags": ["beta-blocker", "rate-control"],
+    "courseBlockId": "block-cv"
+  },
+  {
+    "id": "q2",
+    "stem": {
+      "en": "A patient on lisinopril develops a persistent cough. What mechanism explains this?",
+      "cs": "Pacient na lisinoprilu má přetrvávající kašel. Jaký je mechanismus?"
+    },
+    "options": [
+      { "id": "a", "text": { "en": "Bradykinin accumulation", "cs": "Akumulace bradykininu" }, "correct": true },
+      { "id": "b", "text": { "en": "Histamine release", "cs": "Uvolnění histaminu" }, "correct": false },
+      { "id": "c", "text": { "en": "Muscarinic blockade", "cs": "Blokáda muskarinových receptorů" }, "correct": false },
+      { "id": "d", "text": { "en": "Serotonin surge", "cs": "Vzestup serotoninu" }, "correct": false }
+    ],
+    "explanation": {
+      "en": "ACE inhibition prevents bradykinin breakdown, leading to cough in some patients.",
+      "cs": "Inhibice ACE brání degradaci bradykininu, což vede u části pacientů ke kašli."
+    },
+    "tags": ["acei", "adverse-effect"],
+    "courseBlockId": "block-cv"
+  },
+  {
+    "id": "q3",
+    "stem": {
+      "en": "Which antibiotic has the highest risk of causing Clostridioides difficile infection?",
+      "cs": "Které antibiotikum má nejvyšší riziko vyvolání infekce Clostridioides difficile?"
+    },
+    "options": [
+      { "id": "a", "text": { "en": "Vancomycin", "cs": "Vankomycin" }, "correct": false },
+      { "id": "b", "text": { "en": "Azithromycin", "cs": "Azithromycin" }, "correct": false },
+      { "id": "c", "text": { "en": "Clindamycin", "cs": "Klindamycin" }, "correct": true },
+      { "id": "d", "text": { "en": "Amoxicillin", "cs": "Amoxicilin" }, "correct": false }
+    ],
+    "explanation": {
+      "en": "Clindamycin is classically associated with high C. difficile risk.",
+      "cs": "Klindamycin je klasicky spojen s vysokým rizikem C. difficile."
+    },
+    "tags": ["antibiotic", "c-diff"],
+    "courseBlockId": "block-abx"
+  },
+  {
+    "id": "q4",
+    "stem": {
+      "en": "A 28-year-old with panic disorder needs a medication with rapid onset but short course. Which option fits?",
+      "cs": "28letý pacient s panickou poruchou potřebuje lék s rychlým nástupem, krátkodobě. Který je vhodný?"
+    },
+    "options": [
+      { "id": "a", "text": { "en": "Sertraline", "cs": "Sertralin" }, "correct": false },
+      { "id": "b", "text": { "en": "Lorazepam", "cs": "Lorazepam" }, "correct": true },
+      { "id": "c", "text": { "en": "Buspirone", "cs": "Buspiron" }, "correct": false },
+      { "id": "d", "text": { "en": "Propranolol", "cs": "Propranolol" }, "correct": false }
+    ],
+    "explanation": {
+      "en": "Benzodiazepines like lorazepam act quickly and can be used short term for acute panic.",
+      "cs": "Benzodiazepiny jako lorazepam působí rychle a lze je krátkodobě použít pro akutní paniku."
+    },
+    "tags": ["benzodiazepine", "panic"],
+    "courseBlockId": "block-cns"
+  },
+  {
+    "id": "q5",
+    "stem": {
+      "en": "Which insulin provides basal coverage with once-daily dosing?",
+      "cs": "Který inzulin poskytuje bazální pokrytí při dávkování 1× denně?"
+    },
+    "options": [
+      { "id": "a", "text": { "en": "Insulin glargine", "cs": "Inzulin glargin" }, "correct": true },
+      { "id": "b", "text": { "en": "Insulin lispro", "cs": "Inzulin lispro" }, "correct": false },
+      { "id": "c", "text": { "en": "NPH insulin", "cs": "NPH inzulin" }, "correct": false },
+      { "id": "d", "text": { "en": "Regular insulin", "cs": "Pravidelný inzulin" }, "correct": false }
+    ],
+    "explanation": {
+      "en": "Long-acting analogs like glargine offer flat 24h basal coverage.",
+      "cs": "Dlouhodobě působící analogy jako glargin poskytují ploché 24h bazální pokrytí."
+    },
+    "tags": ["insulin", "basal"],
+    "courseBlockId": "block-endo"
+  },
+  {
+    "id": "q6",
+    "stem": {
+      "en": "What monitoring is most important after starting an ACE inhibitor?",
+      "cs": "Jaké sledování je nejdůležitější po zahájení ACE inhibitoru?"
+    },
+    "options": [
+      { "id": "a", "text": { "en": "Serum potassium and creatinine", "cs": "Draslík a kreatinin" }, "correct": true },
+      { "id": "b", "text": { "en": "Platelet count", "cs": "Počet trombocytů" }, "correct": false },
+      { "id": "c", "text": { "en": "Liver enzymes", "cs": "Jaterní enzymy" }, "correct": false },
+      { "id": "d", "text": { "en": "PT/INR", "cs": "PT/INR" }, "correct": false }
+    ],
+    "explanation": {
+      "en": "ACE inhibitors can raise potassium and creatinine especially after initiation.",
+      "cs": "ACE inhibitory mohou zvýšit draslík a kreatinin zejména po zahájení."
+    },
+    "tags": ["acei", "monitoring"],
+    "courseBlockId": "block-cv"
+  },
+  {
+    "id": "q7",
+    "stem": {
+      "en": "Which mechanism best explains metformin's glucose-lowering effect?",
+      "cs": "Který mechanismus nejlépe vysvětluje účinek metforminu na glukózu?"
+    },
+    "options": [
+      { "id": "a", "text": { "en": "Stimulates insulin secretion", "cs": "Stimuluje sekreci inzulinu" }, "correct": false },
+      { "id": "b", "text": { "en": "Slows carbohydrate absorption", "cs": "Zpomaluje absorpci sacharidů" }, "correct": false },
+      { "id": "c", "text": { "en": "Reduces hepatic gluconeogenesis", "cs": "Snižuje jaterní glukoneogenezi" }, "correct": true },
+      { "id": "d", "text": { "en": "Blocks SGLT2 transporter", "cs": "Blokuje SGLT2" }, "correct": false }
+    ],
+    "explanation": {
+      "en": "Metformin primarily reduces hepatic glucose production and improves sensitivity.",
+      "cs": "Metformin primárně snižuje jaterní produkci glukózy a zlepšuje senzitivitu."
+    },
+    "tags": ["metformin", "mechanism"],
+    "courseBlockId": "block-endo"
+  },
+  {
+    "id": "q8",
+    "stem": {
+      "en": "A patient on sertraline reports new tremor and hyperreflexia after starting tramadol. What is the concern?",
+      "cs": "Pacient na sertralinu má nový třes a hyperreflexii po nasazení tramadolu. Jaká je obava?"
+    },
+    "options": [
+      { "id": "a", "text": { "en": "Serotonin syndrome", "cs": "Serotoninový syndrom" }, "correct": true },
+      { "id": "b", "text": { "en": "QT prolongation", "cs": "Prodloužení QT" }, "correct": false },
+      { "id": "c", "text": { "en": "Neuroleptic malignant syndrome", "cs": "Maligní neuroleptický syndrom" }, "correct": false },
+      { "id": "d", "text": { "en": "Thyrotoxicosis", "cs": "Tyreotoxikóza" }, "correct": false }
+    ],
+    "explanation": {
+      "en": "Combined serotonergic agents can precipitate serotonin syndrome with tremor and hyperreflexia.",
+      "cs": "Kombinace serotoninergních látek může vyvolat serotoninový syndrom s třesem a hyperreflexií."
+    },
+    "tags": ["serotonin", "interaction"],
+    "courseBlockId": "block-cns"
+  },
+  {
+    "id": "q9",
+    "stem": {
+      "en": "Which agent reverses non-depolarizing neuromuscular blockade by increasing acetylcholine?",
+      "cs": "Které činidlo reverzuje nedepolarizující nervosvalovou blokádu zvýšením acetylcholinu?"
+    },
+    "options": [
+      { "id": "a", "text": { "en": "Neostigmine", "cs": "Neostigmin" }, "correct": true },
+      { "id": "b", "text": { "en": "Sugammadex", "cs": "Sugammadex" }, "correct": false },
+      { "id": "c", "text": { "en": "Rocuronium", "cs": "Rokuronium" }, "correct": false },
+      { "id": "d", "text": { "en": "Atropine", "cs": "Atropin" }, "correct": false }
+    ],
+    "explanation": {
+      "en": "Neostigmine inhibits AChE, increasing synaptic acetylcholine to outcompete blockers.",
+      "cs": "Neostigmin inhibuje AChE, zvyšuje acetylcholin a vytěsní blokátory."
+    },
+    "tags": ["cholinergic", "ans"],
+    "courseBlockId": "block-ans"
+  },
+  {
+    "id": "q10",
+    "stem": {
+      "en": "Which antibiotic prolongs the QT interval and should be used cautiously with other QT-prolonging drugs?",
+      "cs": "Které antibiotikum prodlužuje QT a má se používat opatrně s dalšími léky prodlužujícími QT?"
+    },
+    "options": [
+      { "id": "a", "text": { "en": "Azithromycin", "cs": "Azithromycin" }, "correct": true },
+      { "id": "b", "text": { "en": "Amoxicillin", "cs": "Amoxicilin" }, "correct": false },
+      { "id": "c", "text": { "en": "Vancomycin", "cs": "Vankomycin" }, "correct": false },
+      { "id": "d", "text": { "en": "Cefazolin", "cs": "Cefazolin" }, "correct": false }
+    ],
+    "explanation": {
+      "en": "Macrolides like azithromycin can prolong QT and warrant ECG caution in at-risk patients.",
+      "cs": "Makrolidy jako azithromycin mohou prodloužit QT a vyžadují opatrnost u rizikových pacientů."
+    },
+    "tags": ["qt", "interaction"],
+    "courseBlockId": "block-abx"
+  }
+]

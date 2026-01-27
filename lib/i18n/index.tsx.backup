@@ -1,0 +1,54 @@
+"use client";
+
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { en } from "./en";
+import { cs } from "./cs";
+import type { I18nDict } from "./en";
+
+type Language = "en" | "cs";
+
+const dicts: Record<Language, I18nDict> = { en, cs };
+
+interface I18nContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: I18nDict;
+}
+
+const I18nContext = createContext<I18nContextType | null>(null);
+
+export function I18nProvider({ children }: { children: React.ReactNode }) {
+  const [language, setLanguageState] = useState<Language>("en");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("language") as Language | null;
+    if (stored && ["en", "cs"].includes(stored)) {
+      setLanguageState(stored);
+    }
+    setMounted(true);
+  }, []);
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    localStorage.setItem("language", lang);
+  };
+
+  if (!mounted) return <>{children}</>;
+
+  return (
+    <I18nContext.Provider value={{ language, setLanguage, t: dicts[language] }}>
+      {children}
+    </I18nContext.Provider>
+  );
+}
+
+export function useI18n() {
+  const ctx = useContext(I18nContext);
+  if (!ctx) throw new Error("useI18n must be inside I18nProvider");
+  return ctx;
+}
+
+export function getLangValue<T extends { en: string; cs: string }>(obj: T, lang: Language): string {
+  return obj[lang];
+}

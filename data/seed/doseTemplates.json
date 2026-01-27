@@ -1,0 +1,83 @@
+[
+  {
+    "id": "dose-aminoglycoside",
+    "title": { "en": "Aminoglycoside weight-based", "cs": "Hmotnostní dávka aminoglykosidu" },
+    "inputs": [
+      { "name": "weightKg", "label": { "en": "Weight (kg)", "cs": "Hmotnost (kg)" }, "type": "number" },
+      { "name": "creatinine", "label": { "en": "Serum creatinine (mg/dL)", "cs": "Kreatinin (mg/dl)" }, "type": "number" }
+    ],
+    "formula": {
+      "en": "Dose (mg) = weightKg * 7; extend interval if creatinine > 1.5 (educational).",
+      "cs": "Dávka (mg) = hmotnost * 7; prodloužit interval při kreatininu > 1,5 (výukově)."
+    },
+    "example": {
+      "en": "70 kg, Scr 1.0 → 490 mg q24h",
+      "cs": "70 kg, Scr 1,0 → 490 mg každých 24 h"
+    },
+    "tags": ["mg/kg", "renal"]
+  },
+  {
+    "id": "dose-epi-im",
+    "title": { "en": "Epinephrine anaphylaxis IM", "cs": "Adrenalin při anafylaxi i.m." },
+    "inputs": [
+      { "name": "weightKg", "label": { "en": "Weight (kg)", "cs": "Hmotnost (kg)" }, "type": "number" }
+    ],
+    "formula": {
+      "en": "0.01 mg/kg IM (1:1000) max 0.5 mg (educational).",
+      "cs": "0,01 mg/kg i.m. (1:1000) max 0,5 mg (výukově)."
+    },
+    "example": {
+      "en": "60 kg → 0.3–0.5 mg IM",
+      "cs": "60 kg → 0,3–0,5 mg i.m."
+    },
+    "tags": ["emergency", "ans"]
+  },
+  {
+    "id": "dose-insulin-carb",
+    "title": { "en": "Insulin carbohydrate ratio", "cs": "Poměr inzulin/sacharidy" },
+    "inputs": [
+      { "name": "totalDailyDose", "label": { "en": "Total daily insulin (units)", "cs": "Celková denní dávka (jednotky)" }, "type": "number" }
+    ],
+    "formula": {
+      "en": "1 unit covers ~500/totalDailyDose grams of carbs (Rule of 500, educational).",
+      "cs": "1 jednotka pokryje ~500/celková denní dávka gramů sacharidů (pravidlo 500, výukově)."
+    },
+    "example": {
+      "en": "TDD 50u → 1u per 10g carbs",
+      "cs": "TDD 50 j → 1 j na 10 g sacharidů"
+    },
+    "tags": ["diabetes", "calculation"]
+  },
+  {
+    "id": "dose-acetaminophen",
+    "title": { "en": "Acetaminophen pediatrics", "cs": "Paracetamol pediatrie" },
+    "inputs": [
+      { "name": "weightKg", "label": { "en": "Weight (kg)", "cs": "Hmotnost (kg)" }, "type": "number" }
+    ],
+    "formula": {
+      "en": "Dose (mg) = weightKg * 15 every 6h; max 75 mg/kg/day (educational).",
+      "cs": "Dávka (mg) = hmotnost * 15 každých 6 h; max 75 mg/kg/den (výukově)."
+    },
+    "example": {
+      "en": "20 kg → 300 mg q6h, max 1500 mg/day",
+      "cs": "20 kg → 300 mg každých 6 h, max 1500 mg/den"
+    },
+    "tags": ["pediatrics", "mg/kg"]
+  },
+  {
+    "id": "dose-vancomycin",
+    "title": { "en": "Vancomycin loading", "cs": "Vankomycin nasycovací dávka" },
+    "inputs": [
+      { "name": "weightKg", "label": { "en": "Weight (kg)", "cs": "Hmotnost (kg)" }, "type": "number" }
+    ],
+    "formula": {
+      "en": "Loading dose 25 mg/kg actual body weight (educational).",
+      "cs": "Nasycovací dávka 25 mg/kg skutečné hmotnosti (výukově)."
+    },
+    "example": {
+      "en": "80 kg → 2000 mg once",
+      "cs": "80 kg → 2000 mg jednorázově"
+    },
+    "tags": ["loading-dose", "antibiotic"]
+  }
+]

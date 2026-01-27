@@ -1,0 +1,223 @@
+[
+  {
+    "id": "case-htn-1",
+    "stem": {
+      "en": "56-year-old with hypertension and diabetes, baseline potassium 4.6, eGFR 55.",
+      "cs": "56letý s hypertenzí a diabetem, draslík 4,6, eGFR 55."
+    },
+    "patient": { "age": 56, "sex": "M", "weightKg": 88 },
+    "vitals": { "bp": "154/92", "hr": 78 },
+    "labs": { "creatinine": 1.2, "potassium": 4.6 },
+    "choices": [
+      {
+        "id": "a",
+        "option": { "en": "Start lisinopril 10 mg daily", "cs": "Zahájit lisinopril 10 mg denně" },
+        "explanation": {
+          "en": "ACEi offers renal protection and BP control; monitor K/creatinine.",
+          "cs": "ACEi poskytuje renální ochranu a kontrolu TK; sledujte K/kreatinin."
+        }
+      },
+      {
+        "id": "b",
+        "option": { "en": "Start amlodipine 5 mg daily", "cs": "Zahájit amlodipin 5 mg denně" },
+        "explanation": {
+          "en": "CCB lowers BP but no renal benefit; ok if ACEi not tolerated.",
+          "cs": "CCB snižuje TK bez renálního benefitu; vhodné při intoleranci ACEi."
+        }
+      },
+      {
+        "id": "c",
+        "option": { "en": "Add hydrochlorothiazide", "cs": "Přidat hydrochlorothiazid" },
+        "explanation": {
+          "en": "Reasonable add-on but diabetes and K monitoring needed.",
+          "cs": "Rozumný doplněk, ale nutné sledovat diabetes a K."
+        }
+      }
+    ],
+    "rubric": {
+      "correctChoiceId": "a",
+      "contraindicationsMissed": ["Pregnancy (not present)", "History of angioedema"],
+      "interactionsMissed": ["Potassium-sparing diuretics"],
+      "monitoringMissing": ["Repeat K/creatinine in 1-2 weeks"],
+      "scoring": { "correct": 60, "safety": 25, "monitoring": 15 }
+    },
+    "courseBlockId": "block-cv",
+    "tags": ["hypertension", "diabetes", "acei"]
+  },
+  {
+    "id": "case-abx-1",
+    "stem": {
+      "en": "24-year-old with strep pharyngitis, no allergies, asks for short course.",
+      "cs": "24letý s streptokokovou faryngitidou, bez alergií, žádá krátkou léčbu."
+    },
+    "patient": { "age": 24, "sex": "F", "weightKg": 62 },
+    "vitals": { "bp": "118/72", "hr": 82 },
+    "choices": [
+      {
+        "id": "a",
+        "option": { "en": "Amoxicillin 500 mg BID 10 days", "cs": "Amoxicilin 500 mg 2× denně 10 dní" },
+        "explanation": {
+          "en": "First-line narrow-spectrum therapy covering GAS.",
+          "cs": "Léčba první volby úzkého spektra pokrývající GAS."
+        }
+      },
+      {
+        "id": "b",
+        "option": { "en": "Azithromycin 500 mg daily 3 days", "cs": "Azithromycin 500 mg denně 3 dny" },
+        "explanation": {
+          "en": "Alternative for true penicillin allergy; broader and QT risk.",
+          "cs": "Alternativa při skutečné alergii na penicilin; širší spektrum a riziko QT."
+        }
+      },
+      {
+        "id": "c",
+        "option": { "en": "No antibiotics", "cs": "Bez antibiotik" },
+        "explanation": {
+          "en": "Not appropriate for confirmed strep pharyngitis.",
+          "cs": "Nevhodné u potvrzené streptokokové faryngitidy."
+        }
+      }
+    ],
+    "rubric": {
+      "correctChoiceId": "a",
+      "contraindicationsMissed": ["Penicillin anaphylaxis (not present)"],
+      "interactionsMissed": ["None significant"],
+      "monitoringMissing": ["Symptom resolution, adherence"],
+      "scoring": { "correct": 70, "safety": 15, "monitoring": 15 }
+    },
+    "courseBlockId": "block-abx",
+    "tags": ["pharyngitis", "antibiotic"]
+  },
+  {
+    "id": "case-cns-1",
+    "stem": {
+      "en": "32-year-old with new major depression, no cardiac history, prefers once-daily medication.",
+      "cs": "32letý s novou těžkou depresí, bez srdeční anamnézy, preferuje dávku 1× denně."
+    },
+    "patient": { "age": 32, "sex": "F", "weightKg": 70 },
+    "vitals": { "bp": "116/74", "hr": 72 },
+    "choices": [
+      {
+        "id": "a",
+        "option": { "en": "Start sertraline 50 mg daily", "cs": "Zahájit sertralin 50 mg denně" },
+        "explanation": {
+          "en": "SSRI first-line, once daily, monitor early activation and suicidality.",
+          "cs": "SSRI první volby, 1× denně, monitorujte časnou aktivaci a suicidální myšlenky."
+        }
+      },
+      {
+        "id": "b",
+        "option": { "en": "Start amitriptyline 25 mg nightly", "cs": "Zahájit amitriptylin 25 mg na noc" },
+        "explanation": {
+          "en": "Effective but more anticholinergic and cardiac burden.",
+          "cs": "Účinný, ale více anticholinergní a kardiální zátěž."
+        }
+      },
+      {
+        "id": "c",
+        "option": { "en": "Start lorazepam 1 mg TID", "cs": "Zahájit lorazepam 1 mg 3× denně" },
+        "explanation": {
+          "en": "BZD not appropriate as monotherapy for depression.",
+          "cs": "BZD není vhodný jako monoterapie deprese."
+        }
+      }
+    ],
+    "rubric": {
+      "correctChoiceId": "a",
+      "contraindicationsMissed": ["MAOI within 14 days"],
+      "interactionsMissed": ["Serotonergic agents"],
+      "monitoringMissing": ["Mood tracking 2-4 weeks"],
+      "scoring": { "correct": 70, "safety": 20, "monitoring": 10 }
+    },
+    "courseBlockId": "block-cns",
+    "tags": ["depression", "ssri"]
+  },
+  {
+    "id": "case-endo-1",
+    "stem": {
+      "en": "48-year-old with new type 2 diabetes, BMI 33, eGFR 80, fasting glucose 170.",
+      "cs": "48letý s novým DM2, BMI 33, eGFR 80, glykemie nalačno 170."
+    },
+    "patient": { "age": 48, "sex": "M", "weightKg": 104 },
+    "vitals": { "bp": "128/82", "hr": 76 },
+    "choices": [
+      {
+        "id": "a",
+        "option": { "en": "Start metformin and lifestyle", "cs": "Zahájit metformin a režimová opatření" },
+        "explanation": {
+          "en": "First-line if renal function adequate; address weight and glucose.",
+          "cs": "První volba při dostatečné renální funkci; řeší váhu i glukózu."
+        }
+      },
+      {
+        "id": "b",
+        "option": { "en": "Start insulin glargine", "cs": "Zahájit inzulin glargin" },
+        "explanation": {
+          "en": "Reserved for marked hyperglycemia or catabolic symptoms.",
+          "cs": "Vyhrazeno pro výraznou hyperglykemii nebo katabolismus."
+        }
+      },
+      {
+        "id": "c",
+        "option": { "en": "No pharmacotherapy for now", "cs": "Zatím bez farmakoterapie" },
+        "explanation": {
+          "en": "Guidelines recommend pharmacotherapy at diagnosis with fasting 170.",
+          "cs": "Doporučení uvádí farmakoterapii při diagnóze s glykemii 170."
+        }
+      }
+    ],
+    "rubric": {
+      "correctChoiceId": "a",
+      "contraindicationsMissed": ["eGFR < 30 for metformin"],
+      "interactionsMissed": ["Contrast dye hold"],
+      "monitoringMissing": ["A1c in 3 months", "GI tolerance"],
+      "scoring": { "correct": 65, "safety": 20, "monitoring": 15 }
+    },
+    "courseBlockId": "block-endo",
+    "tags": ["diabetes", "metformin"]
+  },
+  {
+    "id": "case-ans-1",
+    "stem": {
+      "en": "70-year-old with anaphylaxis to peanuts receives IM epinephrine. What additional step is key?",
+      "cs": "70letý s anafylaxí na arašídy dostává i.m. adrenalin. Jaký další krok je zásadní?"
+    },
+    "patient": { "age": 70, "sex": "F", "weightKg": 65 },
+    "vitals": { "bp": "88/52", "hr": 112 },
+    "choices": [
+      {
+        "id": "a",
+        "option": { "en": "Repeat epinephrine every 5–15 min if needed", "cs": "Opakovat adrenalin každých 5–15 min dle potřeby" },
+        "explanation": {
+          "en": "Repeat dosing may be needed while arranging airway/fluids.",
+          "cs": "Opakované dávky mohou být nutné při zajištění dýchacích cest/tekutin."
+        }
+      },
+      {
+        "id": "b",
+        "option": { "en": "Start beta-blocker drip", "cs": "Zahájit infuzi beta-blokátoru" },
+        "explanation": {
+          "en": "Contraindicated; worsens anaphylaxis.",
+          "cs": "Kontraindikováno; zhoršuje anafylaxi."
+        }
+      },
+      {
+        "id": "c",
+        "option": { "en": "Give high-dose corticosteroids immediately", "cs": "Podat vysoké dávky kortikoidů ihned" },
+        "explanation": {
+          "en": "Steroids are adjunctive and not first critical step.",
+          "cs": "Kortikoidy jsou doplňkové, ne první klíčový krok."
+        }
+      }
+    ],
+    "rubric": {
+      "correctChoiceId": "a",
+      "contraindicationsMissed": ["None in emergency"],
+      "interactionsMissed": ["Non-selective beta-blockers blunt response"],
+      "monitoringMissing": ["Observe 4-6h for biphasic"],
+      "scoring": { "correct": 70, "safety": 20, "monitoring": 10 }
+    },
+    "courseBlockId": "block-ans",
+    "tags": ["anaphylaxis", "emergency", "adrenergic"]
+  }
+]
