@@ -4,9 +4,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 const datasetOverrideSchema = z.object({
-  questionIds: z.array(z.number()),
-  difficulty: z.enum(["beginner", "intermediate", "advanced"]).optional(),
-  active: z.boolean(),
+  name: z.string().optional(),
+  description: z.string().optional(),
+  jsonText: z.string(),
+  isActive: z.boolean().optional(),
 });
 
 export async function POST(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
@@ -15,18 +16,22 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
   try {
     const rawParams = await params;
     const id = parseInt(rawParams.id, 10);
+    const session = await requireAdmin();
 
     if (isNaN(id)) {
       return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
     }
 
-    const body = datasetOverrideSchema.parse({});
+    const bodyText = await _request.text();
+    const body = datasetOverrideSchema.parse(bodyText ? JSON.parse(bodyText) : {});
+
     const override = await prisma.datasetOverride.create({
       data: {
-        id,
-        questionIds: body.questionIds || [],
-        difficulty: body.difficulty,
-        active: body.active,
+        name: body.name || `override-${id}`,
+        description: body.description || "",
+        jsonText: body.jsonText || "{}",
+        isActive: body.isActive || false,
+        createdById: parseInt(session.user.id, 10),
       },
     });
 
@@ -53,7 +58,7 @@ export async function PATCH(
 
     await prisma.datasetOverride.update({
       where: { id },
-      data: { active: true },
+      data: { isActive: true },
     });
 
     return NextResponse.json({ success: true });

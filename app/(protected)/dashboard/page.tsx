@@ -1,12 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useI18n } from "@/lib/i18n";
 import { DisclaimerModal } from "@/components/DisclaimerModal";
-import { LanguageToggle } from "@/components/LanguageToggle";
-import { signOut } from "next-auth/react";
-import Link from "next/link";
+import { MobileNav } from "@/components/MobileNav";
 import { content } from "@/lib/content";
+import { useI18n } from "@/lib/i18n";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -26,74 +25,80 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-50">
       <DisclaimerModal />
-      
+
       {/* Header */}
-      <header className="bg-white border-b">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-800">PharmTrainer</h1>
-          <div className="flex gap-4 items-center">
-            <LanguageToggle />
-            <Link href="/progress" className="text-sm text-blue-600 hover:underline">
-              {t.nav.progress}
-            </Link>
-            <Link href="/drugs" className="text-sm text-blue-600 hover:underline">
-              {t.nav.drugs}
-            </Link>
-            <Link href="/account" className="text-sm text-blue-600 hover:underline">
-              {t.nav.account}
-            </Link>
-            <button
-              onClick={() => signOut({ redirect: true })}
-              className="text-sm text-red-600 hover:underline"
-            >
-              {t.nav.logout}
-            </button>
-          </div>
+      <header className="bg-white border-b sticky top-0 z-40">
+        <div className="max-w-6xl mx-auto px-4 py-3 sm:py-4 flex justify-between items-center relative">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-800">PharmTrainer</h1>
+          <MobileNav />
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="mb-10">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">{t.nav.dashboard}</h2>
-          <p className="text-gray-600">Select a course block and module to continue learning.</p>
+      <main
+        id="main-content"
+        className="max-w-6xl mx-auto px-4 py-6 sm:py-8 focus:outline-none"
+        tabIndex={-1}
+      >
+        <div className="mb-8 sm:mb-10">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">{t.nav.dashboard}</h2>
+          <p className="text-sm sm:text-base text-gray-600">
+            Select a course block and module to continue learning.
+          </p>
         </div>
 
         {/* Course Blocks */}
-        <section className="mb-12">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">Course Blocks</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <section className="mb-10 sm:mb-12" aria-labelledby="course-blocks-heading">
+          <h3
+            id="course-blocks-heading"
+            className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6"
+          >
+            Course Blocks
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {blocks.map((block) => (
-              <div key={block.id} className="bg-white rounded-lg shadow hover:shadow-lg transition p-6">
-                <h4 className="font-bold text-lg mb-2">
+              <button
+                key={block.id}
+                onClick={() => router.push(`/modules/questions?block=${block.id}`)}
+                className="bg-white rounded-lg shadow hover:shadow-lg active:shadow-md transition p-4 sm:p-6 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                aria-label={`${language === "en" ? block.title.en : block.title.cs} - ${language === "en" ? block.description.en : block.description.cs}`}
+              >
+                <h4 className="font-bold text-base sm:text-lg mb-2">
                   {language === "en" ? block.title.en : block.title.cs}
                 </h4>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">
                   {language === "en" ? block.description.en : block.description.cs}
                 </p>
-                <button
-                  onClick={() => router.push(`/modules/questions?block=${block.id}`)}
-                  className="text-blue-600 text-sm font-semibold hover:underline"
-                >
+                <span className="text-blue-600 text-xs sm:text-sm font-semibold hover:underline">
                   Start Learning →
-                </button>
-              </div>
+                </span>
+              </button>
             ))}
           </div>
         </section>
 
         {/* Modules */}
-        <section>
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">{t.nav.modules}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <section aria-labelledby="modules-heading">
+          <h3
+            id="modules-heading"
+            className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6"
+          >
+            {t.nav.modules}
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {modules.map((module) => (
               <Link
                 key={module.href}
                 href={module.href}
-                className="bg-white rounded-lg shadow hover:shadow-lg transition p-6 flex items-center gap-4"
+                className="bg-white rounded-lg shadow hover:shadow-lg active:shadow-md transition p-4 sm:p-6 flex items-center gap-3 sm:gap-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                aria-label={module.label}
               >
-                <span className="text-4xl">{module.icon}</span>
-                <span className="font-semibold text-gray-800">{module.label}</span>
+                <span className="text-3xl sm:text-4xl flex-shrink-0" aria-hidden="true">
+                  {module.icon}
+                </span>
+                <span className="font-semibold text-sm sm:text-base text-gray-800">
+                  {module.label}
+                </span>
               </Link>
             ))}
           </div>
@@ -101,9 +106,9 @@ export default function Dashboard() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 mt-12 py-8">
+      <footer className="bg-gray-900 text-gray-300 mt-10 sm:mt-12 py-6 sm:py-8">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <p className="text-sm mb-2">
+          <p className="text-xs sm:text-sm mb-2">
             {t.disclaimer.title.replace("⚠️ ", "")} - {t.disclaimer.content}
           </p>
           <p className="text-xs text-gray-500">

@@ -1,4 +1,5 @@
 import { ErrorPage } from "@/components/error-page";
+import { en } from "@/lib/i18n/en";
 import { createLogger } from "@/lib/server-logger";
 
 export default function NotFound() {
@@ -7,8 +8,8 @@ export default function NotFound() {
 
   return (
     <ErrorPage
-      title="Page Not Found"
-      message="The page you're looking for doesn't exist or has been moved."
+      title={en.errors.pageNotFound}
+      message={en.errors.pageNotFoundMessage}
       statusCode={404}
       language="en"
     />

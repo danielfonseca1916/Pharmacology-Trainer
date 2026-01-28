@@ -10,7 +10,7 @@ export const en = {
     logout: "Logout",
     login: "Login",
   },
-  
+
   // Modules
   modules: {
     questionBank: "Question Bank",
@@ -37,8 +37,10 @@ export const en = {
   // Disclaimers
   disclaimer: {
     title: "⚠️ Educational Use Only",
-    content: "This application is designed exclusively for educational purposes. It is NOT intended for clinical decision-making or medical practice. All information provided is for learning and training purposes only.",
-    clinicalWarning: "Do NOT use this tool for patient care or clinical decisions. Always consult qualified healthcare professionals and official medical references.",
+    content:
+      "This application is designed exclusively for educational purposes. It is NOT intended for clinical decision-making or medical practice. All information provided is for learning and training purposes only.",
+    clinicalWarning:
+      "Do NOT use this tool for patient care or clinical decisions. Always consult qualified healthcare professionals and official medical references.",
     iUnderstand: "I understand and accept",
   },
 
@@ -96,6 +98,33 @@ export const en = {
     close: "Close",
     cancel: "Cancel",
     save: "Save",
+  },
+
+  // Admin
+  admin: {
+    title: "Admin Panel",
+    dataset: "Dataset Management",
+    validate: "Validate",
+    import: "Import",
+    export: "Export",
+    lint: "Lint Dataset",
+  },
+
+  // Errors
+  errors: {
+    pageNotFound: "Page Not Found",
+    pageNotFoundMessage: "The page you're looking for doesn't exist or has been moved.",
+    dataLoadError: "Data Loading Error",
+    dataLoadErrorMessage: "We couldn't load the required data. Please try refreshing the page.",
+    serverError: "Server Error",
+    serverErrorMessage: "Something went wrong on our end. Please try again later.",
+    unauthorized: "Unauthorized",
+    unauthorizedMessage: "You don't have permission to access this page.",
+    sessionExpired: "Session Expired",
+    sessionExpiredMessage: "Your session has expired. Please log in again.",
+    goHome: "Go Home",
+    reportIssue: "Report Issue",
+    retry: "Retry",
   },
 };
 

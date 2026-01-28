@@ -4,12 +4,12 @@ import type { LintIssue, ValidationResult } from "./types";
 
 export function validateDataset(bundle: unknown): ValidationResult {
   const issues: LintIssue[] = [];
-  
+
   const parsed = datasetBundleSchema.safeParse(bundle);
-  
+
   if (!parsed.success) {
     const zodErrors = parsed.error.format();
-    
+
     // Convert Zod errors to LintIssues
     function extractZodErrors(obj: Record<string, unknown>, prefix = ""): void {
       for (const key in obj) {
@@ -27,9 +27,9 @@ export function validateDataset(bundle: unknown): ValidationResult {
         }
       }
     }
-    
+
     extractZodErrors(zodErrors);
-    
+
     return {
       valid: false,
       errors: issues.filter((i) => i.severity === "error"),
@@ -52,10 +52,7 @@ export function lintDataset(data: DatasetBundle): LintIssue[] {
   const issues: LintIssue[] = [];
 
   // Check for duplicate IDs within each collection
-  function checkDuplicateIds<T extends { id: string }>(
-    items: T[],
-    collectionName: string
-  ): void {
+  function checkDuplicateIds<T extends { id: string }>(items: T[], collectionName: string): void {
     const seen = new Set<string>();
     for (const item of items) {
       if (seen.has(item.id)) {
@@ -79,11 +76,7 @@ export function lintDataset(data: DatasetBundle): LintIssue[] {
   checkDuplicateIds(data.doseTemplates, "doseTemplates");
 
   // Check for missing or empty translations
-  function checkI18nField(
-    obj: { en: string; cs: string },
-    fieldPath: string,
-    id: string
-  ): void {
+  function checkI18nField(obj: { en: string; cs: string }, fieldPath: string, id: string): void {
     if (!obj.en || !obj.en.trim()) {
       issues.push({
         type: "missing-translation",
@@ -140,13 +133,12 @@ export function lintDataset(data: DatasetBundle): LintIssue[] {
   for (const question of data.questions) {
     checkI18nField(question.stem, "questions.stem", question.id);
     checkI18nField(question.explanation, "questions.explanation", question.id);
-    
+
     for (let i = 0; i < question.options.length; i++) {
-      checkI18nField(
-        question.options[i].text,
-        `questions.options[${i}].text`,
-        question.id
-      );
+      const option = question.options[i];
+      if (option) {
+        checkI18nField(option.text, `questions.options[${i}].text`, question.id);
+      }
     }
 
     // Check that at least one option is correct
@@ -165,18 +157,14 @@ export function lintDataset(data: DatasetBundle): LintIssue[] {
   // Validate cases
   for (const caseStudy of data.cases) {
     checkI18nField(caseStudy.stem, "cases.stem", caseStudy.id);
-    
-    for (let i = 0; i < caseStudy.choices.length; i++) {
-      checkI18nField(
-        caseStudy.choices[i].option,
-        `cases.choices[${i}].option`,
-        caseStudy.id
-      );
-      checkI18nField(
-        caseStudy.choices[i].explanation,
-        `cases.choices[${i}].explanation`,
-        caseStudy.id
-      );
+
+    for (let i = 0; i < (caseStudy.choices?.length ?? 0); i++) {
+      const choice = caseStudy.choices?.[i];
+
+      if (!choice) continue;
+
+      checkI18nField(choice.option, `cases.choices[${i}].option`, caseStudy.id);
+      checkI18nField(choice.explanation, `cases.choices[${i}].explanation`, caseStudy.id);
     }
 
     // Validate rubric references
@@ -204,13 +192,12 @@ export function lintDataset(data: DatasetBundle): LintIssue[] {
     checkI18nField(template.title, "doseTemplates.title", template.id);
     checkI18nField(template.formula, "doseTemplates.formula", template.id);
     checkI18nField(template.example, "doseTemplates.example", template.id);
-    
-    for (let i = 0; i < template.inputs.length; i++) {
-      checkI18nField(
-        template.inputs[i].label,
-        `doseTemplates.inputs[${i}].label`,
-        template.id
-      );
+
+    for (let i = 0; i < (template.inputs?.length ?? 0); i++) {
+      const input = template.inputs?.[i];
+
+      if (!input) continue;
+      checkI18nField(input.label, `doseTemplates.inputs[${i}].label`, template.id);
     }
   }
 

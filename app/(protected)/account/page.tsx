@@ -1,7 +1,7 @@
 "use client";
 
-import { useSession, signOut } from "next-auth/react";
 import { useI18n } from "@/lib/i18n";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function Account() {
@@ -25,7 +25,7 @@ export default function Account() {
         </div>
 
         <button
-          onClick={() => signOut({ redirect: true })}
+          onClick={() => signOut({ callbackUrl: "/login", redirect: true })}
           className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded"
         >
           {t.nav.logout}

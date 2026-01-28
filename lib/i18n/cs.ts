@@ -37,8 +37,10 @@ export const cs = {
   // Disclaimers
   disclaimer: {
     title: "⚠️ Pouze pro vzdělávací účely",
-    content: "Tato aplikace je určena výhradně pro vzdělávací účely. NENÍ určena pro klinické rozhodování nebo lékařskou praxi. Všechny informace jsou určeny pouze pro učení a školení.",
-    clinicalWarning: "NEPOUŽÍVEJTE tento nástroj pro péči o pacienty nebo klinická rozhodnutí. Vždy se poraďte s kvalifikovanými zdravotnickými pracovníky a oficiálními lékařskými doporučeními.",
+    content:
+      "Tato aplikace je určena výhradně pro vzdělávací účely. NENÍ určena pro klinické rozhodování nebo lékařskou praxi. Všechny informace jsou určeny pouze pro učení a školení.",
+    clinicalWarning:
+      "NEPOUŽÍVEJTE tento nástroj pro péči o pacienty nebo klinická rozhodnutí. Vždy se poraďte s kvalifikovanými zdravotnickými pracovníky a oficiálními lékařskými doporučeními.",
     iUnderstand: "Rozumím a souhlasím",
   },
 
@@ -96,6 +98,33 @@ export const cs = {
     close: "Zavřít",
     cancel: "Zrušit",
     save: "Uložit",
+  },
+
+  // Admin
+  admin: {
+    title: "Administrátorský panel",
+    dataset: "Správa datasetu",
+    validate: "Validovat",
+    import: "Importovat",
+    export: "Exportovat",
+    lint: "Zkontrolovat dataset",
+  },
+
+  // Errors
+  errors: {
+    pageNotFound: "Stránka nenalezena",
+    pageNotFoundMessage: "Stránka, kterou hledáte, neexistuje nebo byla přesunuta.",
+    dataLoadError: "Chyba načítání dat",
+    dataLoadErrorMessage: "Nepodařilo se načíst požadovaná data. Zkuste stránku obnovit.",
+    serverError: "Chyba serveru",
+    serverErrorMessage: "Něco se pokazilo na naší straně. Zkuste to prosím později.",
+    unauthorized: "Neautorizováno",
+    unauthorizedMessage: "Nemáte oprávnění k přístupu na tuto stránku.",
+    sessionExpired: "Relace vypršela",
+    sessionExpiredMessage: "Vaše relace vypršela. Přihlaste se prosím znovu.",
+    goHome: "Domů",
+    reportIssue: "Nahlásit problém",
+    retry: "Zkusit znovu",
   },
 };
 

@@ -24,7 +24,9 @@
     "dataset:export": "tsx scripts/dataset-export.ts",
     "dataset:validate": "tsx scripts/validate-data.ts",
     "admin:promote": "tsx scripts/promote-admin.ts",
-    "prepare": "husky || true"
+    "prepare": "husky || true",
+    "db:reset": "prisma migrate reset --force && pnpm seed",
+    "db:seed": "pnpm seed"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",

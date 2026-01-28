@@ -1,12 +1,12 @@
 "use client";
 export const dynamic = "force-dynamic";
 
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { useI18n } from "@/lib/i18n";
+import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useI18n } from "@/lib/i18n";
-import { LanguageToggle } from "@/components/LanguageToggle";
-import Link from "next/link";
-import { signIn } from "next-auth/react";
 
 export default function Login() {
   const router = useRouter();
@@ -14,6 +14,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [errorId] = useState("login-error");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,37 +51,58 @@ export default function Login() {
 
         <h2 className="text-xl font-semibold text-gray-700 mb-6">{t.auth.signIn}</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">{t.auth.email}</label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              {t.auth.email}
+            </label>
             <input
+              id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="demo@pharmtrainer.test"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:outline-none transition"
               required
+              aria-required="true"
+              aria-describedby={error ? errorId : undefined}
+              disabled={loading}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">{t.auth.password}</label>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              {t.auth.password}
+            </label>
             <input
+              id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password123!"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:outline-none transition"
               required
+              aria-required="true"
+              aria-describedby={error ? errorId : undefined}
+              disabled={loading}
             />
           </div>
 
-          {error && <div className="text-red-600 text-sm bg-red-50 p-3 rounded">{error}</div>}
+          {error && (
+            <div
+              id={errorId}
+              className="text-red-600 text-sm bg-red-50 p-3 rounded border border-red-200"
+              role="alert"
+            >
+              {error}
+            </div>
+          )}
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold py-2 px-4 rounded-lg transition"
+            className="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-gray-400 text-white font-semibold py-2 px-4 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            aria-busy={loading}
           >
             {loading ? t.common.loading : t.auth.signIn}
           </button>
@@ -88,7 +110,10 @@ export default function Login() {
 
         <p className="text-center text-gray-600 text-sm mt-6">
           {t.auth.noAccount}{" "}
-          <Link href="/register" className="text-blue-600 hover:underline font-semibold">
+          <Link
+            href="/register"
+            className="text-blue-600 hover:text-blue-800 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1"
+          >
             {t.auth.signUp}
           </Link>
         </p>

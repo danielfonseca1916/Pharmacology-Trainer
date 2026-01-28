@@ -1,102 +1,116 @@
 generator client {
-	provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-	provider = "sqlite"
-	url      = "file:./dev.db"
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model User {
-	id           Int              @id @default(autoincrement())
-	email        String           @unique
-	passwordHash String
-	role         Role             @default(USER)
-	createdAt    DateTime         @default(now())
-	settings     UserSettings?
-	bookmarks    Bookmark[]
-	attempts     Attempt[]
-	progress     ProgressByTag[]
-	srsItems     SpacedRepetitionItem[]
-	datasetOverrides DatasetOverride[]
+  id           Int                     @id @default(autoincrement())
+  email        String                  @unique
+  passwordHash String
+  role         Role                    @default(USER)
+  createdAt    DateTime                @default(now())
+  settings     UserSettings?
+  bookmarks    Bookmark[]
+  attempts     Attempt[]
+  progress     ProgressByTag[]
+  srsItems     SpacedRepetitionItem[]
+  datasetOverrides DatasetOverride[]
+
+  @@index([email])
 }
 
 enum Role {
-	USER
-	ADMIN
+  USER
+  ADMIN
 }
 
 model UserSettings {
-	id        Int      @id @default(autoincrement())
-	user      User     @relation(fields: [userId], references: [id])
-	userId    Int      @unique
-	language  String   @default("en")
-	createdAt DateTime @default(now())
-	updatedAt DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int      @unique
+  language  String   @default("en")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Bookmark {
-	id         Int      @id @default(autoincrement())
-	user       User     @relation(fields: [userId], references: [id])
-	userId     Int
-	entityType String
-	entityId   String
-	createdAt  DateTime @default(now())
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     Int
+  entityType String
+  entityId   String
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([entityType, entityId])
 }
 
 enum AttemptEntityType {
-	question
-	case
-	calc
+  question
+  case
+  calc
 }
 
 model Attempt {
-	id          Int                @id @default(autoincrement())
-	user        User               @relation(fields: [userId], references: [id])
-	userId      Int
-	entityType  AttemptEntityType
-	entityId    String
-	answers     Json
-	score       Float
-	feedback    Json
-	createdAt   DateTime           @default(now())
+  id         Int               @id @default(autoincrement())
+  user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     Int
+  entityType AttemptEntityType
+  entityId   String
+  answers    Json
+  score      Float
+  feedback   Json
+  createdAt  DateTime          @default(now())
+
+  @@index([userId, createdAt])
+  @@index([userId, entityType, entityId])
 }
 
 model ProgressByTag {
-	id            Int      @id @default(autoincrement())
-	user          User     @relation(fields: [userId], references: [id])
-	userId        Int
-	module        String
-	courseBlock   String
-	tag           String
-	correctCount  Int      @default(0)
-	wrongCount    Int      @default(0)
-	lastAttemptAt DateTime @default(now())
-	@@unique([userId, module, courseBlock, tag])
+  id            Int      @id @default(autoincrement())
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        Int
+  module        String
+  courseBlock   String
+  tag           String
+  correctCount  Int      @default(0)
+  wrongCount    Int      @default(0)
+  lastAttemptAt DateTime @default(now())
+
+  @@unique([userId, module, courseBlock, tag])
+  @@index([userId, module, courseBlock, tag])
 }
 
 model SpacedRepetitionItem {
-	id             Int      @id @default(autoincrement())
-	user           User     @relation(fields: [userId], references: [id])
-	userId         Int
-	entityType     String
-	entityId       String
-	easeFactor     Float
-	intervalDays   Int
-	nextReviewAt   DateTime
-	lastReviewedAt DateTime
+  id             Int      @id @default(autoincrement())
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId         Int
+  entityType     String
+  entityId       String
+  easeFactor     Float
+  intervalDays   Int
+  nextReviewAt   DateTime
+  lastReviewedAt DateTime
 
-	@@unique([userId, entityType, entityId])
+  @@unique([userId, entityType, entityId])
+  @@index([userId, nextReviewAt])
 }
 
 model DatasetOverride {
-	id           Int      @id @default(autoincrement())
-	name         String
-	description  String   @default("")
-	jsonText     String
-	isActive     Boolean  @default(false)
-	createdBy    User     @relation(fields: [createdById], references: [id])
-	createdById  Int
-	createdAt    DateTime @default(now())
-	updatedAt    DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String   @default("")
+  jsonText    String
+  isActive    Boolean  @default(false)
+  createdBy   User     @relation(fields: [createdById], references: [id], onDelete: Cascade)
+  createdById Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([createdById])
 }
