@@ -1,6 +1,8 @@
-import { prisma } from "@/lib/prisma";
+"use client";
+
 import { auth } from "@/auth";
 import { I18nProvider } from "@/lib/i18n";
+import { prisma } from "@/lib/prisma";
 import { ProgressTable } from "./progress-table";
 
 export default async function ProgressPage() {

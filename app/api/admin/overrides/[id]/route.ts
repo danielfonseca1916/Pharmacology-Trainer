@@ -1,21 +1,18 @@
-import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin-auth";
 import { prisma } from "@/lib/prisma";
+import { NextResponse } from "next/server";
 import { z } from "zod";
 
 const idSchema = z.object({
   id: z.string().regex(/^\d+$/, "Invalid ID format"),
 });
 
-export async function POST(
-  req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+export async function POST({ params }: { params: Promise<{ id: string }> }) {
   await requireAdmin();
 
   try {
     const rawParams = await params;
-    
+
     // Validate ID parameter
     const validation = idSchema.safeParse(rawParams);
     if (!validation.success) {
@@ -24,7 +21,7 @@ export async function POST(
         { status: 400 }
       );
     }
-    
+
     const { id } = validation.data;
     const idNum = parseInt(id);
 
@@ -42,22 +39,16 @@ export async function POST(
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Activate error:", error);
-    return NextResponse.json(
-      { error: "Failed to activate override" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to activate override" }, { status: 500 });
   }
 }
 
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+export async function DELETE({ params }: { params: Promise<{ id: string }> }) {
   await requireAdmin();
 
   try {
     const rawParams = await params;
-    
+
     // Validate ID parameter
     const validation = idSchema.safeParse(rawParams);
     if (!validation.success) {
@@ -66,7 +57,7 @@ export async function DELETE(
         { status: 400 }
       );
     }
-    
+
     const { id } = validation.data;
     const idNum = parseInt(id);
 
@@ -77,9 +68,6 @@ export async function DELETE(
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Delete error:", error);
-    return NextResponse.json(
-      { error: "Failed to delete override" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to delete override" }, { status: 500 });
   }
 }

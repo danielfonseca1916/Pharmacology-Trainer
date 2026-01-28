@@ -4,7 +4,7 @@ import { useI18n } from "@/lib/i18n";
 
 interface ProgressTableProps {
   items: Array<{
-    id: string;
+    id: number;
     userId: number;
     module: string;
     courseBlock: string;
