@@ -1,18 +1,16 @@
 "use client";
 
 import { ErrorPage } from "@/components/error-page";
-import { createLogger } from "@/lib/server-logger";
-import { useEffect } from "react";
 
 interface ErrorProps {
   error: Error & { digest?: string };
 }
 
 export default function RootError({ error }: ErrorProps) {
-  useEffect(() => {
-    const logger = createLogger("RootError");
-    logger.error("Root error", error);
-  }, [error]);
+  // Log to console in client-side
+  if (typeof window !== "undefined") {
+    console.error("[RootError]", error);
+  }
 
   return (
     <ErrorPage

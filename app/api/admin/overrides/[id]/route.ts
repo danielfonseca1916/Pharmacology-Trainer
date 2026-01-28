@@ -1,39 +1,59 @@
 import { requireAdmin } from "@/lib/admin-auth";
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-const idSchema = z.object({
-  id: z.string().regex(/^\d+$/, "Invalid ID format"),
+const datasetOverrideSchema = z.object({
+  questionIds: z.array(z.number()),
+  difficulty: z.enum(["beginner", "intermediate", "advanced"]).optional(),
+  active: z.boolean(),
 });
 
-export async function POST({ params }: { params: Promise<{ id: string }> }) {
+export async function POST(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   await requireAdmin();
 
   try {
     const rawParams = await params;
+    const id = parseInt(rawParams.id, 10);
 
-    // Validate ID parameter
-    const validation = idSchema.safeParse(rawParams);
-    if (!validation.success) {
-      return NextResponse.json(
-        { error: "Invalid request", details: validation.error.errors },
-        { status: 400 }
-      );
+    if (isNaN(id)) {
+      return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
     }
 
-    const { id } = validation.data;
-    const idNum = parseInt(id);
-
-    // Deactivate all other overrides
-    await prisma.datasetOverride.updateMany({
-      data: { isActive: false },
+    const body = datasetOverrideSchema.parse({});
+    const override = await prisma.datasetOverride.create({
+      data: {
+        id,
+        questionIds: body.questionIds || [],
+        difficulty: body.difficulty,
+        active: body.active,
+      },
     });
 
-    // Activate this one
+    return NextResponse.json(override);
+  } catch (error) {
+    console.error("Create override error:", error);
+    return NextResponse.json({ error: "Failed to create override" }, { status: 500 });
+  }
+}
+
+export async function PATCH(
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  await requireAdmin();
+
+  try {
+    const rawParams = await params;
+    const id = parseInt(rawParams.id, 10);
+
+    if (isNaN(id)) {
+      return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
+    }
+
     await prisma.datasetOverride.update({
-      where: { id: idNum },
-      data: { isActive: true },
+      where: { id },
+      data: { active: true },
     });
 
     return NextResponse.json({ success: true });
@@ -43,26 +63,22 @@ export async function POST({ params }: { params: Promise<{ id: string }> }) {
   }
 }
 
-export async function DELETE({ params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   await requireAdmin();
 
   try {
     const rawParams = await params;
+    const id = parseInt(rawParams.id, 10);
 
-    // Validate ID parameter
-    const validation = idSchema.safeParse(rawParams);
-    if (!validation.success) {
-      return NextResponse.json(
-        { error: "Invalid request", details: validation.error.errors },
-        { status: 400 }
-      );
+    if (isNaN(id)) {
+      return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
     }
 
-    const { id } = validation.data;
-    const idNum = parseInt(id);
-
     await prisma.datasetOverride.delete({
-      where: { id: idNum },
+      where: { id },
     });
 
     return NextResponse.json({ success: true });
