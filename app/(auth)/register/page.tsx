@@ -1,11 +1,11 @@
 "use client";
 export const dynamic = "force-dynamic";
 
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { useI18n } from "@/lib/i18n";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useI18n } from "@/lib/i18n";
-import { LanguageToggle } from "@/components/LanguageToggle";
-import Link from "next/link";
 
 export default function Register() {
   const router = useRouter();
@@ -64,7 +64,9 @@ export default function Register() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">{t.auth.password}</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              {t.auth.password}
+            </label>
             <input
               type="password"
               value={password}
@@ -80,6 +82,7 @@ export default function Register() {
 
           <button
             type="submit"
+            data-testid="register-button"
             disabled={loading}
             className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold py-2 px-4 rounded-lg transition"
           >

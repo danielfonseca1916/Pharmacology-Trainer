@@ -58,6 +58,7 @@ export default function Login() {
             </label>
             <input
               id="email"
+              data-testid="email-input"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -76,6 +77,7 @@ export default function Login() {
             </label>
             <input
               id="password"
+              data-testid="password-input"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -100,6 +102,7 @@ export default function Login() {
 
           <button
             type="submit"
+            data-testid="login-button"
             disabled={loading}
             className="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-gray-400 text-white font-semibold py-2 px-4 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             aria-busy={loading}

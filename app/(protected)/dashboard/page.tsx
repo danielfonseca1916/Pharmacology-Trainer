@@ -39,9 +39,15 @@ export default function Dashboard() {
         id="main-content"
         className="max-w-6xl mx-auto px-4 py-6 sm:py-8 focus:outline-none"
         tabIndex={-1}
+        data-testid="dashboard-main"
       >
         <div className="mb-8 sm:mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">{t.nav.dashboard}</h2>
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2"
+            data-testid="dashboard-title"
+          >
+            {t.nav.dashboard}
+          </h2>
           <p className="text-sm sm:text-base text-gray-600">
             Select a course block and module to continue learning.
           </p>
@@ -86,21 +92,25 @@ export default function Dashboard() {
             {t.nav.modules}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-            {modules.map((module) => (
-              <Link
-                key={module.href}
-                href={module.href}
-                className="bg-white rounded-lg shadow hover:shadow-lg active:shadow-md transition p-4 sm:p-6 flex items-center gap-3 sm:gap-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                aria-label={module.label}
-              >
-                <span className="text-3xl sm:text-4xl flex-shrink-0" aria-hidden="true">
-                  {module.icon}
-                </span>
-                <span className="font-semibold text-sm sm:text-base text-gray-800">
-                  {module.label}
-                </span>
-              </Link>
-            ))}
+            {modules.map((module) => {
+              const moduleName = module.href.split("/").pop() || "unknown";
+              return (
+                <Link
+                  key={module.href}
+                  href={module.href}
+                  className="bg-white rounded-lg shadow hover:shadow-lg active:shadow-md transition p-4 sm:p-6 flex items-center gap-3 sm:gap-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  aria-label={module.label}
+                  data-testid={`module-${moduleName}`}
+                >
+                  <span className="text-3xl sm:text-4xl flex-shrink-0" aria-hidden="true">
+                    {module.icon}
+                  </span>
+                  <span className="font-semibold text-sm sm:text-base text-gray-800">
+                    {module.label}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </section>
       </main>

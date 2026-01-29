@@ -44,10 +44,9 @@ describe("/api/health", () => {
       courseBlocks: [],
       drugs: [{ id: "test", nameEn: "Test Drug", nameCs: "Test Drug" } as any],
       questions: [],
-      caseStudies: [],
+      cases: [],
       interactions: [],
-      dosageCalculations: [],
-      flashcards: [],
+      doseTemplates: [],
     });
 
     const response = await GET();
@@ -78,10 +77,9 @@ describe("/api/health", () => {
       courseBlocks: [],
       drugs: [{ id: "test" } as any],
       questions: [],
-      caseStudies: [],
+      cases: [],
       interactions: [],
-      dosageCalculations: [],
-      flashcards: [],
+      doseTemplates: [],
     });
 
     const response = await GET();
@@ -109,10 +107,9 @@ describe("/api/health", () => {
       courseBlocks: [],
       drugs: [{ id: "test" } as any],
       questions: [],
-      caseStudies: [],
+      cases: [],
       interactions: [],
-      dosageCalculations: [],
-      flashcards: [],
+      doseTemplates: [],
     });
 
     const response = await GET();
@@ -165,10 +162,9 @@ describe("/api/health", () => {
       courseBlocks: [],
       drugs: [], // Empty drugs array
       questions: [],
-      caseStudies: [],
+      cases: [],
       interactions: [],
-      dosageCalculations: [],
-      flashcards: [],
+      doseTemplates: [],
     });
 
     const response = await GET();
@@ -196,10 +192,9 @@ describe("/api/health", () => {
       courseBlocks: [],
       drugs: [{ id: "test" } as any],
       questions: [],
-      caseStudies: [],
+      cases: [],
       interactions: [],
-      dosageCalculations: [],
-      flashcards: [],
+      doseTemplates: [],
     });
 
     const response = await GET();
@@ -224,10 +219,9 @@ describe("/api/health", () => {
       courseBlocks: [],
       drugs: [{ id: "test" } as any],
       questions: [],
-      caseStudies: [],
+      cases: [],
       interactions: [],
-      dosageCalculations: [],
-      flashcards: [],
+      doseTemplates: [],
     });
 
     const response = await GET();

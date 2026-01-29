@@ -57,12 +57,18 @@ describe("i18n Error Messages", () => {
     it("should have no empty strings", () => {
       Object.values(en.errors).forEach((value) => {
         expect(value).toBeTruthy();
-        expect(value.length).toBeGreaterThan(0);
+        expect(typeof value).toBe("string");
+        if (typeof value === "string") {
+          expect(value.length).toBeGreaterThan(0);
+        }
       });
 
       Object.values(cs.errors).forEach((value) => {
         expect(value).toBeTruthy();
-        expect(value.length).toBeGreaterThan(0);
+        expect(typeof value).toBe("string");
+        if (typeof value === "string") {
+          expect(value.length).toBeGreaterThan(0);
+        }
       });
     });
   });

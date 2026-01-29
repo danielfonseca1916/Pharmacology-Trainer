@@ -123,10 +123,11 @@ export default function QuestionsModule() {
             {language === "en" ? question.stem.en : question.stem.cs}
           </h2>
 
-          <fieldset className="space-y-3">
+          <fieldset className="space-y-3" data-testid="question-container">
             <legend className="sr-only">Answer options</legend>
             {question.options.map((option, index) => (
               <label
+                data-testid={`answer-option-${index}`}
                 key={option.id}
                 className={`flex items-center p-4 rounded border-2 cursor-pointer transition focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 ${
                   selected === option.id
@@ -181,6 +182,7 @@ export default function QuestionsModule() {
           {!submitted ? (
             <button
               onClick={handleSubmit}
+              data-testid="submit-answer-button"
               disabled={!selected}
               className="flex-1 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-gray-400 text-white font-semibold py-2 rounded transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               title="Alt+S"

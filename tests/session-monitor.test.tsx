@@ -1,7 +1,7 @@
 import { SessionMonitor } from "@/components/SessionMonitor";
 import { render, waitFor } from "@testing-library/react";
 import { SessionProvider } from "next-auth/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 // Mock next-auth
 vi.mock("next-auth/react", async () => {
@@ -97,7 +97,7 @@ describe("SessionMonitor", () => {
     expect(mockFetch).not.toHaveBeenCalled();
   });
 
-  it("should cleanup interval and event listener on unmount", () => {
+  it("should cleanup interval and event listener on unmount", async () => {
     const { useSession } = await import("next-auth/react");
     (useSession as any).mockReturnValue({
       data: { user: { id: "1", email: "test@example.com" } },

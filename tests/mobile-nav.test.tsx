@@ -1,6 +1,6 @@
 import { MobileNav } from "@/components/MobileNav";
 import { I18nProvider } from "@/lib/i18n";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 // Mock next-auth
@@ -91,9 +91,15 @@ describe("MobileNav", () => {
     });
 
     const mobileNav = screen.getByRole("navigation", { name: /mobile navigation/i });
-    const progressLinks = screen.getAllByText(/progress/i);
+    const progressLinks = within(mobileNav).getAllByText(/progress/i);
+    expect(progressLinks.length).toBeGreaterThan(1);
+    const progressLink = progressLinks[1];
+    expect(progressLink).toBeTruthy();
     // Click the mobile link (should be the second one)
-    fireEvent.click(progressLinks[1]);
+    if (!progressLink) {
+      throw new Error("Expected a second progress link in mobile navigation.");
+    }
+    fireEvent.click(progressLink);
 
     await waitFor(() => {
       expect(screen.queryByRole("navigation", { name: /mobile navigation/i })).toBeNull();
@@ -116,9 +122,16 @@ describe("MobileNav", () => {
       expect(screen.getByRole("navigation", { name: /mobile navigation/i })).toBeTruthy();
     });
 
-    const logoutButtons = screen.getAllByText(/logout/i);
+    const mobileNav = screen.getByRole("navigation", { name: /mobile navigation/i });
+    const logoutButtons = within(mobileNav).getAllByText(/logout/i);
+    expect(logoutButtons.length).toBeGreaterThan(1);
+    const logoutButton = logoutButtons[1];
+    expect(logoutButton).toBeTruthy();
     // Click the mobile logout button (should be the second one)
-    fireEvent.click(logoutButtons[1]);
+    if (!logoutButton) {
+      throw new Error("Expected a second logout button in mobile navigation.");
+    }
+    fireEvent.click(logoutButton);
 
     expect(signOut).toHaveBeenCalledWith({ callbackUrl: "/login", redirect: true });
   });

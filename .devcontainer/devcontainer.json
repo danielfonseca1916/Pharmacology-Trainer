@@ -1,7 +1,7 @@
 {
   "name": "Pharmacology Trainer",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
-  
+
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "22",
@@ -21,30 +21,25 @@
         "ms-playwright.playwright"
       ],
       "settings": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": null,
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
           "source.fixAll.eslint": "explicit",
           "source.organizeImports": "explicit"
         },
-        "eslint.validate": [
-          "javascript",
-          "javascriptreact",
-          "typescript",
-          "typescriptreact"
-        ],
+        "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
         "typescript.tsdk": "node_modules/typescript/lib",
         "[typescript]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
+          "editor.defaultFormatter": "vscode.typescript-language-features"
         },
         "[typescriptreact]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
+          "editor.defaultFormatter": "vscode.typescript-language-features"
         },
         "[javascript]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
+          "editor.defaultFormatter": "vscode.typescript-language-features"
         },
         "[json]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
+          "editor.defaultFormatter": "vscode.json-language-features"
         }
       }
     }
@@ -65,7 +60,7 @@
   "postCreateCommand": "corepack enable && pnpm install && pnpm prisma:generate",
 
   "remoteUser": "node",
-  
+
   "mounts": [
     "source=${localWorkspaceFolder}/node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
   ]

@@ -1,11 +1,11 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
 import {
-  loadDatasetSafely,
-  validateDatasetSafely,
   DatasetError,
   DatasetErrorCodes,
   getDatasetErrorMessage,
+  loadDatasetSafely,
+  validateDatasetSafely,
 } from "@/lib/dataset-error";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 describe("Dataset Error Handling", () => {
   beforeEach(() => {
@@ -53,9 +53,7 @@ describe("Dataset Error Handling", () => {
         throw new Error("Load failed");
       });
 
-      await expect(loadDatasetSafely(loader, { throwOnError: true })).rejects.toThrow(
-        DatasetError
-      );
+      await expect(loadDatasetSafely(loader, { throwOnError: true })).rejects.toThrow(DatasetError);
     });
 
     it("should handle timeout errors", async () => {
@@ -100,7 +98,7 @@ describe("Dataset Error Handling", () => {
     });
 
     it("should return fallback data on validation error", async () => {
-      const fallbackData = { id: 0 };
+      const fallbackData = { name: "Fallback" };
       const mockData = { name: "Test" };
       const validator = vi.fn(async () => {
         throw new Error("Validation failed");
